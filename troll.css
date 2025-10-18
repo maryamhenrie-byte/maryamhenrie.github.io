@@ -1,0 +1,221 @@
+/* ------------------------
+   SUMMER VIBES THEME ☀️
+   Bright, warm, interactive, and fun.
+-------------------------*/
+
+:root {
+  --sun: #FFD166;
+  --ocean: #06D6A0;
+  --sky: #4ECDC4;
+  --coral: #FF6B6B;
+  --sand: #FAF3DD;
+  --text-dark: #083D77;
+  --glass: rgba(255,255,255,0.08);
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.15);
+  --font: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: linear-gradient(120deg, var(--sky), var(--ocean), var(--sun));
+  background-size: 300% 300%;
+  animation: bgShift 10s ease-in-out infinite alternate;
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* --- CARD CONTAINER --- */
+main.content {
+  width: 90%;
+  max-width: 850px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* floating bubble animation background */
+main.content::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -120px;
+  background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
+  opacity: 0.2;
+  animation: floatBubble 12s ease-in-out infinite alternate;
+}
+
+main.content::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  bottom: -80px;
+  right: -100px;
+  background: radial-gradient(circle, var(--sun) 0%, transparent 70%);
+  opacity: 0.2;
+  animation: floatBubble 14s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatBubble {
+  from { transform: translateY(0px) scale(1); }
+  to { transform: translateY(30px) scale(1.05); }
+}
+
+/* --- HEADER --- */
+.topbar h1 {
+  font-size: 1.9rem;
+  color: var(--coral);
+  text-shadow: 0 2px 6px rgba(255, 107, 107, 0.4);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.subtitle {
+  color: var(--text-dark);
+  font-weight: 500;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  background: linear-gradient(90deg, var(--sun), var(--coral));
+  border: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0 6px 14px rgba(255, 107, 107, 0.4);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 209, 102, 0.6);
+  background: linear-gradient(90deg, var(--coral), var(--sun));
+}
+
+.btn.alt {
+  background: linear-gradient(90deg, var(--sky), var(--ocean));
+  box-shadow: 0 6px 14px rgba(78, 205, 196, 0.4);
+}
+
+.btn.alt:hover {
+  transform: rotate(2deg) scale(1.05);
+  box-shadow: 0 10px 20px rgba(6, 214, 160, 0.5);
+}
+
+/* --- LINKS --- */
+.fake-links {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.link {
+  color: var(--ocean);
+  background: rgba(255,255,255,0.5);
+  border: 2px solid transparent;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: #fff;
+  background: linear-gradient(90deg, var(--ocean), var(--sky));
+  transform: scale(1.08);
+}
+
+/* --- TOASTER --- */
+.toaster {
+  margin-top: 20px;
+  min-height: 30px;
+  color: var(--coral);
+  font-weight: 600;
+  transition: opacity 0.5s ease;
+}
+
+/* --- TYPING AREA --- */
+.typing {
+  margin-top: 25px;
+  min-height: 60px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.6);
+  color: var(--text-dark);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  border: 2px dashed var(--sun);
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 8px rgba(255, 209, 102, 0.4); }
+  to { box-shadow: 0 0 20px rgba(255, 209, 102, 0.8); }
+}
+
+/* --- FOOTER --- */
+.footer {
+  margin-top: 35px;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+/* --- CONFETTI CANVAS --- */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 640px) {
+  .topbar h1 {
+    font-size: 1.4rem;
+  }
+  .btn {
+    padding: 10px 16px;
+  }
+}
